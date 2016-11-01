@@ -3,12 +3,14 @@ package caple
 import (
 	"fmt"
 
+	pg "gopkg.in/pg.v5"
+
 	"github.com/kataras/iris"
 )
 
 // Student represents a student
 type Student struct {
-	ID    int64
+	ID    uint64
 	Name  string
 	Email string
 }
@@ -27,5 +29,29 @@ func studentsHandler(c *iris.Context) {
 		})
 	} else {
 		c.JSON(iris.StatusOK, students)
+	}
+}
+
+func studentByIDHandler(c *iris.Context) {
+	var student Student
+	studentID, err := c.ParamInt("id")
+	if err != nil {
+		c.JSON(iris.StatusServiceUnavailable, iris.Map{
+			"error": err.Error(),
+		})
+	}
+	c.Log("Query Student ID: %d", studentID)
+	err = db.Model(&student).Where("id = ?", studentID).Select()
+	if err != nil {
+		if err == pg.ErrNoRows {
+			c.JSON(iris.StatusNotFound, iris.Map{})
+		} else {
+			c.Log(err.Error())
+			c.JSON(iris.StatusServiceUnavailable, iris.Map{
+				"error": err.Error(),
+			})
+		}
+	} else {
+		c.JSON(iris.StatusOK, student)
 	}
 }

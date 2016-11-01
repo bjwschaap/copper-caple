@@ -27,7 +27,7 @@ func main() {
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:   "address, a",
-			Value:  "192.168.99.100:3456",
+			Value:  "127.0.0.1:26257",
 			Usage:  "Address (host:port) of the database host",
 			EnvVar: "DB_ADDRESS",
 		},
@@ -45,7 +45,7 @@ func main() {
 		},
 		cli.StringFlag{
 			Name:   "password, p",
-			Value:  "caple",
+			Value:  "1109@Pie",
 			Usage:  "Database password",
 			EnvVar: "DB_PASSWORD",
 		},

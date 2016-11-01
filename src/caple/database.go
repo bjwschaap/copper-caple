@@ -1,14 +1,21 @@
 package caple
 
-import pg "gopkg.in/pg.v5"
+import (
+	"log"
+	"os"
+
+	pg "gopkg.in/pg.v5"
+)
 
 var db *pg.DB
 
-func init() {
+func dbConnect() {
 	db = pg.Connect(&pg.Options{
 		Addr:     config.dbURL,
 		User:     config.dbUser,
 		Password: config.dbPassword,
 		Database: config.dbName,
 	})
+
+	pg.SetQueryLogger(log.New(os.Stdout, "", log.LstdFlags))
 }

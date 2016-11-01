@@ -11,6 +11,9 @@ func StartServer(c *cli.Context) error {
 	// Store configuration globally
 	setConfig(c)
 
+	// Initialize DB connection
+	dbConnect()
+
 	// Start server, and serve context path
 	api := iris.New()
 
@@ -24,6 +27,7 @@ func StartServer(c *cli.Context) error {
 	// Add all API endpoint handlers
 	api.Get("/caple/v1/status", statusHandler)
 	api.Get("/caple/v1/students", studentsHandler)
+	api.Get("/caple/v1/student/:id", studentByIDHandler)
 
 	// Start listening..
 	api.ListenTLS(config.listenAddress, "server.cert", "server.key")
