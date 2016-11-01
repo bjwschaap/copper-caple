@@ -13,11 +13,21 @@ func StartServer(c *cli.Context) error {
 
 	// Start server, and serve context path
 	api := iris.New()
+
+	// Set some configuration
+	api.Config.LoggerPreffix = "[copper-caple] "
+
+	// Add middlewares that process all requests before the handler
 	api.Use(logger.New())
 	api.Use(&apiTokenMiddleware{})
+
+	// Add all API endpoint handlers
 	api.Get("/caple/v1/status", statusHandler)
+
+	// Start listening..
 	api.ListenTLS(config.listenAddress, "server.cert", "server.key")
 
+	// Eventually return to CLI wrapper
 	return nil
 }
 
