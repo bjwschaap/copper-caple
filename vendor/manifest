@@ -120,6 +120,13 @@
 			"branch": "master"
 		},
 		{
+			"importpath": "github.com/iris-contrib/middleware/logger",
+			"repository": "https://github.com/iris-contrib/middleware",
+			"revision": "fd204bbe1fe40fb92800f5dfbb5d637776a30b46",
+			"branch": "master",
+			"path": "/logger"
+		},
+		{
 			"importpath": "github.com/iris-contrib/websocket",
 			"repository": "https://github.com/iris-contrib/websocket",
 			"revision": "cc9f1712095295a828e9a2efaef388d30b9c7760",
