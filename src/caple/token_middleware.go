@@ -15,12 +15,12 @@ func (m apiTokenMiddleware) Serve(c *iris.Context) {
 		if params[0] == "apikey" && params[1] == config.apiKey {
 			c.Next()
 		} else {
-			c.JSON(403, iris.Map{
+			c.JSON(iris.StatusForbidden, iris.Map{
 				"403": "Forbidden",
 			})
 		}
 	} else {
-		c.JSON(403, iris.Map{
+		c.JSON(iris.StatusForbidden, iris.Map{
 			"403": "Forbidden",
 		})
 	}

@@ -26,10 +26,28 @@ func main() {
 	// Define the configuration flags the program can/should use
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
-			Name:   "db, d",
+			Name:   "address, a",
 			Value:  "192.168.99.100:3456",
-			Usage:  "Address of the database",
-			EnvVar: "DB_URL",
+			Usage:  "Address (host:port) of the database host",
+			EnvVar: "DB_ADDRESS",
+		},
+		cli.StringFlag{
+			Name:   "db, d",
+			Value:  "capledb",
+			Usage:  "Database name",
+			EnvVar: "DB_NAME",
+		},
+		cli.StringFlag{
+			Name:   "user, u",
+			Value:  "caple",
+			Usage:  "Database user",
+			EnvVar: "DB_USER",
+		},
+		cli.StringFlag{
+			Name:   "password, p",
+			Value:  "caple",
+			Usage:  "Database password",
+			EnvVar: "DB_PASSWORD",
 		},
 		cli.StringFlag{
 			Name:   "listen, l",

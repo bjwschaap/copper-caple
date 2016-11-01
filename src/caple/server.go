@@ -23,17 +23,11 @@ func StartServer(c *cli.Context) error {
 
 	// Add all API endpoint handlers
 	api.Get("/caple/v1/status", statusHandler)
+	api.Get("/caple/v1/students", studentsHandler)
 
 	// Start listening..
 	api.ListenTLS(config.listenAddress, "server.cert", "server.key")
 
 	// Eventually return to CLI wrapper
 	return nil
-}
-
-// statusHandler returns the current (health)status of the service
-func statusHandler(c *iris.Context) {
-	c.JSON(iris.StatusOK, iris.Map{
-		"status": "OK",
-	})
 }
