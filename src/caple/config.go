@@ -1,6 +1,7 @@
 package caple
 
 import (
+	"log"
 	"os"
 
 	"github.com/urfave/cli"
@@ -35,5 +36,15 @@ func setConfig(c *cli.Context) {
 	if config.proxy == "" {
 		// Try uppercase as well..
 		config.proxy = os.Getenv("HTTP_PROXY")
+	}
+
+	if config.debug {
+		log.SetPrefix(loggerPrefix)
+		log.Printf("DB Address:  %s\n", config.dbURL)
+		log.Printf("DB Username: %s\n", config.dbUser)
+		log.Printf("DB Password: %s\n", "********")
+		log.Printf("DB Name:     %s\n", config.dbName)
+		log.Printf("API Key:     %s\n", config.apiKey)
+		log.Printf("Proxy:       %s\n", config.proxy)
 	}
 }
