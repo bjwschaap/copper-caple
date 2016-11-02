@@ -2,4 +2,5 @@
 [![platform](https://img.shields.io/badge/platform-Any-ec2eb4.svg?style=flat-square)]()
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](LICENSE)
 [![reportcard](https://goreportcard.com/badge/github.com/bjwschaap/copper-caple?style=flat-square)](https://goreportcard.com/report/github.com/bjwschaap/copper-caple)
+[![travis](https://travis-ci.org/bjwschaap/copper-caple.svg?branch=master&style=flat-square)](https://travis-ci.org/bjwschaap/copper-caple)
 # copper-caple
