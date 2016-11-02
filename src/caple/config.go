@@ -15,6 +15,7 @@ type configuration struct {
 	dbName        string
 	proxy         string
 	apiKey        string
+	debug         bool
 }
 
 // Global configuration for this service
@@ -29,6 +30,7 @@ func setConfig(c *cli.Context) {
 	config.dbName = c.String("db")
 	config.listenAddress = c.String("listen")
 	config.apiKey = c.String("apikey")
+	config.debug = c.Bool("debug")
 	config.proxy = os.Getenv("http_proxy")
 	if config.proxy == "" {
 		// Try uppercase as well..

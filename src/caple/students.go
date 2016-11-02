@@ -40,7 +40,9 @@ func studentByIDHandler(c *iris.Context) {
 			"error": err.Error(),
 		})
 	}
-	c.Log("Query Student ID: %d", studentID)
+	if config.debug {
+		c.Log("Query Student ID: %d", studentID)
+	}
 	err = db.Model(&student).Where("id = ?", studentID).Select()
 	if err != nil {
 		if err == pg.ErrNoRows {

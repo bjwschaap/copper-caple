@@ -17,5 +17,7 @@ func dbConnect() {
 		Database: config.dbName,
 	})
 
-	pg.SetQueryLogger(log.New(os.Stdout, "", log.LstdFlags))
+	if config.debug {
+		pg.SetQueryLogger(log.New(os.Stdout, "", log.LstdFlags))
+	}
 }

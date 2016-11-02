@@ -61,6 +61,11 @@ func main() {
 			Usage:  "API Key needed for using this service",
 			EnvVar: "API_KEY",
 		},
+		cli.BoolFlag{
+			Name:   "debug",
+			Usage:  "Set to true for extra debug logging",
+			EnvVar: "DEBUG",
+		},
 	}
 
 	// Set the main program logic
