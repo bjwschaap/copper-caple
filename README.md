@@ -1,2 +1,5 @@
-<a href="https://goreportcard.com/report/github.com/bjwschaap/copper-caple"><img src="https://goreportcard.com/badge/github.com/bjwschaap/copper-caple"/></a>
+[![golang](https://img.shields.io/badge/powered_by-Go-3362c2.svg?style=flat-square)](https://golang.org)
+[![platform](https://img.shields.io/badge/platform-Any-ec2eb4.svg?style=flat-square)]()
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+[![reportcard](https://goreportcard.com/badge/github.com/bjwschaap/copper-caple)](https://goreportcard.com/report/github.com/bjwschaap/copper-caple)
 # copper-caple
