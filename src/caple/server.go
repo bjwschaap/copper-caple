@@ -1,6 +1,8 @@
 package caple
 
 import (
+	"log"
+
 	"github.com/iris-contrib/middleware/logger"
 	"github.com/kataras/iris"
 	"github.com/urfave/cli"
@@ -18,16 +20,21 @@ func StartServer(c *cli.Context) error {
 	api := iris.New()
 
 	// Set some configuration
-	api.Config.LoggerPreffix = "[copper-caple] "
+	api.Config.LoggerPreffix = loggerPrefix
 
-	// Add middlewares that process all requests before the handler
+	// Add middlewares that process all requests alongside the handler
 	api.Use(logger.New())
 	api.Use(&apiTokenMiddleware{})
 
 	// Add all API endpoint handlers
-	api.Get("/caple/v1/status", statusHandler)
-	api.Get("/caple/v1/students", studentsHandler)
-	api.Get("/caple/v1/student/:id", studentByIDHandler)
+	api.Get(contextPath+"/status", statusHandler)
+	api.Get(contextPath+"/students", studentsHandler)
+	api.Get(contextPath+"/student/:id", studentByIDHandler)
+
+	// Optionally output service endpoint
+	if config.debug {
+		log.Printf("Service URL: %s\n", "https://"+config.listenAddress+contextPath)
+	}
 
 	// Start listening..
 	api.ListenTLS(config.listenAddress, "server.cert", "server.key")

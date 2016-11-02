@@ -18,6 +18,6 @@ func dbConnect() {
 	})
 
 	if config.debug {
-		pg.SetQueryLogger(log.New(os.Stdout, "", log.LstdFlags))
+		pg.SetQueryLogger(log.New(os.Stdout, loggerPrefix, log.LstdFlags))
 	}
 }

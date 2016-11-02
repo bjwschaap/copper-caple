@@ -15,7 +15,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "copper-caple"
 	app.Usage = "Backend microservice for managing competences"
-	app.Version = "0.1.0"
+	app.Version = caple.Version
 	app.Copyright = "(C)2016 B.J.W. Schaap"
 	app.Author = "Bastiaan Schaap"
 	app.Email = "bastiaan.schaap@gmail.com"
