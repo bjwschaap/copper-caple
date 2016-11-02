@@ -63,6 +63,6 @@ func inspectRoutes(api *iris.Framework) {
 		// Extract METHOD and PATH by reflection/inspection
 		methodStr := rv.FieldByName("methodStr").String()
 		path := rv.FieldByName("path").String()
-		log.Printf("- %s %s", methodStr, path)
+		log.Printf("%d - %s %s", i+1, methodStr, path)
 	}
 }
