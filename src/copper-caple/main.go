@@ -56,6 +56,12 @@ func main() {
 			EnvVar: "DB_POOLSIZE",
 		},
 		cli.StringFlag{
+			Name:   "pooltimeout, t",
+			Value:  "5s",
+			Usage:  "Seconds a client can wait for connection before timeout",
+			EnvVar: "DB_POOLTIMEOUT",
+		},
+		cli.StringFlag{
 			Name:   "listen, l",
 			Value:  "127.0.0.1:1616",
 			Usage:  "Listen address and port",

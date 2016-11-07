@@ -3,6 +3,7 @@ package caple
 import (
 	"log"
 	"os"
+	"time"
 
 	"github.com/urfave/cli"
 )
@@ -15,6 +16,7 @@ type configuration struct {
 	dbPassword    string
 	dbName        string
 	dbPoolSize    int
+	dbPoolTimeout time.Duration
 	proxy         string
 	apiKey        string
 	debug         bool
@@ -31,6 +33,7 @@ func setConfig(c *cli.Context) {
 	config.dbPassword = c.String("password")
 	config.dbName = c.String("db")
 	config.dbPoolSize = c.Int("poolsize")
+	config.dbPoolTimeout, _ = time.ParseDuration(c.String("pooltimeout"))
 	config.listenAddress = c.String("listen")
 	config.apiKey = c.String("apikey")
 	config.debug = c.Bool("debug")
@@ -42,12 +45,13 @@ func setConfig(c *cli.Context) {
 
 	if config.debug {
 		log.SetPrefix(loggerPrefix)
-		log.Printf("DB Address:  %s\n", config.dbURL)
-		log.Printf("DB Username: %s\n", config.dbUser)
-		log.Printf("DB Password: %s\n", "********")
-		log.Printf("DB Name:     %s\n", config.dbName)
-		log.Printf("DB Poolsize: %d\n", config.dbPoolSize)
-		log.Printf("API Key:     %s\n", config.apiKey)
-		log.Printf("Proxy:       %s\n", config.proxy)
+		log.Printf("DB Address:      %s\n", config.dbURL)
+		log.Printf("DB Username:     %s\n", config.dbUser)
+		log.Printf("DB Password:     %s\n", "************")
+		log.Printf("DB Name:         %s\n", config.dbName)
+		log.Printf("DB Poolsize:     %d\n", config.dbPoolSize)
+		log.Printf("DB Pool Timeout: %v\n", config.dbPoolTimeout)
+		log.Printf("API Key:         %s\n", config.apiKey)
+		log.Printf("Proxy:           %s\n", config.proxy)
 	}
 }

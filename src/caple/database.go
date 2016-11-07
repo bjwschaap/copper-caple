@@ -11,11 +11,12 @@ var db *pg.DB
 
 func dbConnect() {
 	db = pg.Connect(&pg.Options{
-		Addr:     config.dbURL,
-		User:     config.dbUser,
-		Password: config.dbPassword,
-		Database: config.dbName,
-		PoolSize: config.dbPoolSize,
+		Addr:        config.dbURL,
+		User:        config.dbUser,
+		Password:    config.dbPassword,
+		Database:    config.dbName,
+		PoolSize:    config.dbPoolSize,
+		PoolTimeout: config.dbPoolTimeout,
 	})
 
 	if config.debug {

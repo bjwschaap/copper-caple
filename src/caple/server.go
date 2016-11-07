@@ -41,8 +41,8 @@ func StartServer(c *cli.Context) error {
 	}
 
 	// Start listening..
-	api.ListenTLS(config.listenAddress, "server.cert", "server.key")
-
+	//api.ListenTLS(config.listenAddress, "server.cert", "server.key")
+	api.Listen(config.listenAddress)
 	// Eventually return to CLI wrapper
 	return nil
 }
