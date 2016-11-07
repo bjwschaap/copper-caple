@@ -15,6 +15,7 @@ func dbConnect() {
 		User:     config.dbUser,
 		Password: config.dbPassword,
 		Database: config.dbName,
+		PoolSize: config.dbPoolSize,
 	})
 
 	if config.debug {

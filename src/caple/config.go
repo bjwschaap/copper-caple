@@ -14,6 +14,7 @@ type configuration struct {
 	dbUser        string
 	dbPassword    string
 	dbName        string
+	dbPoolSize    int
 	proxy         string
 	apiKey        string
 	debug         bool
@@ -29,6 +30,7 @@ func setConfig(c *cli.Context) {
 	config.dbUser = c.String("user")
 	config.dbPassword = c.String("password")
 	config.dbName = c.String("db")
+	config.dbPoolSize = c.Int("poolsize")
 	config.listenAddress = c.String("listen")
 	config.apiKey = c.String("apikey")
 	config.debug = c.Bool("debug")
@@ -44,6 +46,7 @@ func setConfig(c *cli.Context) {
 		log.Printf("DB Username: %s\n", config.dbUser)
 		log.Printf("DB Password: %s\n", "********")
 		log.Printf("DB Name:     %s\n", config.dbName)
+		log.Printf("DB Poolsize: %d\n", config.dbPoolSize)
 		log.Printf("API Key:     %s\n", config.apiKey)
 		log.Printf("Proxy:       %s\n", config.proxy)
 	}

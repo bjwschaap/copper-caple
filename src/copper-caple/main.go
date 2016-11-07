@@ -49,6 +49,12 @@ func main() {
 			Usage:  "Database password",
 			EnvVar: "DB_PASSWORD",
 		},
+		cli.IntFlag{
+			Name:   "poolsize, s",
+			Value:  20,
+			Usage:  "Database connection pool size",
+			EnvVar: "DB_POOLSIZE",
+		},
 		cli.StringFlag{
 			Name:   "listen, l",
 			Value:  "127.0.0.1:1616",
